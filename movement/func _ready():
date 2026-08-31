@@ -1,0 +1,14 @@
+func _ready():
+	generate_object()
+	for i in range(5):
+		dds.publish("item_position_"+str(i+1), dds.DDS_TYPE_INT, positions[i])
+
+func generate_object():
+	var points=spawnPoints.get_children()
+	points.shuffle()
+	
+	for i in range(maxObj):
+		var item= objectScene.instantiate()
+		item.global_position=points[i].global_position
+		container.add_child(item)
+		positions[i]=item.name.to_int()
