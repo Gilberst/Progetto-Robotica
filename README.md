@@ -13,9 +13,9 @@ Usando la comunicazione via socket/DDS, si implementino in Python gli algoritmi 
 
 Si generi, all’avvio, un grafo prefissato che include le 20 possibili posizioni, piu’ una posizione di partenzascelta a piacere. 
     Si faccia effettuare al multirotore questa sequenza di azioni:    
-      _1. Decollo e posizionamento ad una z specifica;  
-      _2. Raggiungimento della posizione i-esima dove e’ posizionato uno dei 5 oggetti usando la navigazione lungo in grafo e l’algoritmo di percorso minimo;  
-      _3. Cattura dell’oggetto (la cattura va simulata rimuovendo l’oggetto dalla scena);  
-      _4. Trasporto dell’oggetto alla posizione di partenza;  
-      _5. Rilascio dell’oggetto a terra (simulato);  
-      _6. Restart dal punto 1.  
+      1. Decollo e posizionamento ad una z specifica;  
+      2. Raggiungimento della posizione i-esima dove e’ posizionato uno dei 5 oggetti usando la navigazione lungo in grafo e l’algoritmo di percorso minimo;  
+      3. Cattura dell’oggetto (la cattura va simulata rimuovendo l’oggetto dalla scena);  
+      4. Trasporto dell’oggetto alla posizione di partenza;  
+      5. Rilascio dell’oggetto a terra (simulato);  
+      6. Restart dal punto 1.  
