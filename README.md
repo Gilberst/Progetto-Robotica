@@ -1,7 +1,7 @@
 # Progetto-Robotica
 Progetto di robotica.
 
-> Richiesta:
+Richiesta:
 
 >1 Modello:
 
