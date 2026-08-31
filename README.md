@@ -1,7 +1,7 @@
 # Progetto-Robotica
 Progetto di robotica.
 
-Richiesta:
+ > Richiesta:
   1 Modello:  
       Si modelli, in Godot, un multirotore e si scelgano a piacere i dati di massa e di attrito. Si consideri l’ambiente caratterizzato dalla presenza di 5 oggetti posizionati in modo random tra 20 possibili posizioni note.  
   2 Controllo:  
