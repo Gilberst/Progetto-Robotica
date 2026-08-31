@@ -1,0 +1,241 @@
+[gd_scene format=3 uid="uid://u0ikq5gy3co"]
+
+[ext_resource type="Script" uid="uid://cs0d5tuuw4roe" path="res://codes/drone.gd" id="1_66hbi"]
+[ext_resource type="Texture2D" uid="uid://dcod7b63b62v5" path="res://base.png" id="1_cmxi4"]
+[ext_resource type="Script" uid="uid://d08egbi62r3c3" path="res://codes/body.gd" id="2_rerqr"]
+[ext_resource type="Script" uid="uid://j5lqvwnoe5w" path="res://codes/object_system.gd" id="3_f1g4y"]
+[ext_resource type="Script" uid="uid://dh62vut1rvcjt" path="res://codes/meshSize.gd" id="4_5a657"]
+[ext_resource type="ArrayMesh" uid="uid://dxfhf0poei3li" path="res://materials/modello.obj" id="4_cmxi4"]
+[ext_resource type="PackedScene" uid="uid://1vw03gn4iwqf" path="res://object.tscn" id="4_o80ak"]
+[ext_resource type="Script" uid="uid://b2lkrevxbnnle" path="res://codes/deposito.gd" id="7_telde"]
+[ext_resource type="Texture2D" uid="uid://cl8ia3yqa1vj5" path="res://depos.png" id="8_5bjdn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_klgt3"]
+size = Vector3(20, 2, 20)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bsjqw"]
+size = Vector2(20, 20)
+
+[sub_resource type="Skin" id="Skin_5a657"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4jwky"]
+albedo_texture = ExtResource("1_cmxi4")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tj5u4"]
+size = Vector3(20, 5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bsjqw"]
+size = Vector3(20, 5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_f1g4y"]
+size = Vector3(20, 5, 0.5)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f1g4y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1w186"]
+size = Vector3(1.3, 0.4, 1.3)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_klgt3"]
+top_radius = 1.0
+bottom_radius = 1.5
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o4uid"]
+albedo_texture = ExtResource("8_5bjdn")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bsjqw"]
+height = 1.0
+radius = 1.0
+
+[node name="Node3D" type="Node3D" unique_id=1384245656]
+
+[node name="Camera3D2" type="Camera3D" parent="." unique_id=1182682320]
+transform = Transform3D(-4.371139e-08, -0.75011104, 0.66131186, 0, 0.66131186, 0.75011104, -1, 3.2788396e-08, -2.890686e-08, 12.385, 11.031, 0)
+near = 0.046
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=380402914]
+transform = Transform3D(1, 0, 0, 0, 0.8038968, 0.5947688, 0, -0.5947688, 0.8038968, 0, 2.1758084, 1.2094232)
+
+[node name="evironment" type="Node3D" parent="." unique_id=1360871447]
+
+[node name="floor" type="StaticBody3D" parent="evironment" unique_id=1899904450]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00048154593)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="evironment/floor" unique_id=1209572029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("BoxShape3D_klgt3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="evironment/floor" unique_id=194279534]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.017167568, 0, 0)
+mesh = SubResource("PlaneMesh_bsjqw")
+skin = SubResource("Skin_5a657")
+surface_material_override/0 = SubResource("StandardMaterial3D_4jwky")
+
+[node name="wall" type="StaticBody3D" parent="evironment" unique_id=179517809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 10)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="evironment/wall" unique_id=961078480]
+shape = SubResource("BoxShape3D_tj5u4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="evironment/wall" unique_id=1228291022]
+mesh = SubResource("BoxMesh_bsjqw")
+
+[node name="wall2" type="StaticBody3D" parent="evironment" unique_id=997593646]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -10, 2, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="evironment/wall2" unique_id=1631432019]
+shape = SubResource("BoxShape3D_tj5u4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="evironment/wall2" unique_id=363266019]
+mesh = SubResource("BoxMesh_bsjqw")
+skeleton = NodePath("../../wall2")
+
+[node name="wall3" type="StaticBody3D" parent="evironment" unique_id=1447439792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -10)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="evironment/wall3" unique_id=472979255]
+shape = SubResource("BoxShape3D_tj5u4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="evironment/wall3" unique_id=245078226]
+mesh = SubResource("BoxMesh_f1g4y")
+
+[node name="drone" type="Node3D" parent="." unique_id=648384613 groups=["drone"]]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 1, 0)
+script = ExtResource("1_66hbi")
+
+[node name="body" type="RigidBody3D" parent="drone" unique_id=2064192206]
+physics_material_override = SubResource("PhysicsMaterial_f1g4y")
+script = ExtResource("2_rerqr")
+
+[node name="Body_mesh" type="MeshInstance3D" parent="drone/body" unique_id=1714422060]
+mesh = ExtResource("4_cmxi4")
+script = ExtResource("4_5a657")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="drone/body" unique_id=693112870]
+transform = Transform3D(0.9999946, 0, 0, 0, 1, 0, 0, 0, 0.9999946, 0, 0.2, 0)
+shape = SubResource("BoxShape3D_1w186")
+
+[node name="objectSystem" type="Node3D" parent="." unique_id=968427204]
+script = ExtResource("3_f1g4y")
+objectScene = ExtResource("4_o80ak")
+
+[node name="points" type="Node3D" parent="objectSystem" unique_id=400680359]
+
+[node name="1" type="Marker3D" parent="objectSystem/points" unique_id=2086670164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="2" type="Marker3D" parent="objectSystem/points" unique_id=1272320317]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+
+[node name="3" type="Marker3D" parent="objectSystem/points" unique_id=1868974042]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="4" type="Marker3D" parent="objectSystem/points" unique_id=669032909]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="5" type="Marker3D" parent="objectSystem/points" unique_id=577521319]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 5)
+
+[node name="6" type="Marker3D" parent="objectSystem/points" unique_id=1501449249]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 3.5)
+
+[node name="7" type="Marker3D" parent="objectSystem/points" unique_id=208838783]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -4)
+
+[node name="8" type="Marker3D" parent="objectSystem/points" unique_id=272257268]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -3)
+
+[node name="9" type="Marker3D" parent="objectSystem/points" unique_id=1608268305]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, -2)
+
+[node name="10" type="Marker3D" parent="objectSystem/points" unique_id=551590515]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+
+[node name="11" type="Marker3D" parent="objectSystem/points" unique_id=1964648464]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4)
+
+[node name="12" type="Marker3D" parent="objectSystem/points" unique_id=421871129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 8)
+
+[node name="13" type="Marker3D" parent="objectSystem/points" unique_id=46608236]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.5)
+
+[node name="14" type="Marker3D" parent="objectSystem/points" unique_id=1722216063]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 7.5)
+
+[node name="15" type="Marker3D" parent="objectSystem/points" unique_id=22526341]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -8)
+
+[node name="16" type="Marker3D" parent="objectSystem/points" unique_id=2055734368]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -8)
+
+[node name="17" type="Marker3D" parent="objectSystem/points" unique_id=1595951504]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -6.5)
+
+[node name="18" type="Marker3D" parent="objectSystem/points" unique_id=476133344]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 2.5)
+
+[node name="19" type="Marker3D" parent="objectSystem/points" unique_id=1712622874]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -4)
+
+[node name="20" type="Marker3D" parent="objectSystem/points" unique_id=13305682]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 9)
+
+[node name="objectContainer" type="Node3D" parent="objectSystem" unique_id=1091683441]
+
+[node name="deposito" type="Node3D" parent="." unique_id=1415900808 groups=["deposit"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("7_telde")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="deposito" unique_id=734844369 groups=["deposit"]]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="deposito/RigidBody3D" unique_id=2073480530]
+mesh = SubResource("CylinderMesh_klgt3")
+surface_material_override/0 = SubResource("StandardMaterial3D_o4uid")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="deposito/RigidBody3D" unique_id=762936479]
+shape = SubResource("CylinderShape3D_bsjqw")
+
+[node name="X_lab" type="Label" parent="." unique_id=242566792]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "X_position"
+
+[node name="Y_lab" type="Label" parent="." unique_id=913803242]
+offset_top = 23.0
+offset_right = 80.0
+offset_bottom = 46.0
+text = "Y_position"
+
+[node name="Z_lab" type="Label" parent="." unique_id=500164152]
+offset_top = 48.0
+offset_right = 80.0
+offset_bottom = 71.0
+text = "Z_position"
+
+[node name="X_rot_lab" type="Label" parent="." unique_id=1093309383]
+offset_left = 165.0
+offset_right = 245.0
+offset_bottom = 23.0
+text = "X_rotation"
+
+[node name="Y_rot_lab" type="Label" parent="." unique_id=29822379]
+offset_left = 167.0
+offset_top = 25.0
+offset_right = 247.0
+offset_bottom = 48.0
+text = "Y_rotation"
+
+[node name="Z_rot_lab" type="Label" parent="." unique_id=631674335]
+offset_left = 167.0
+offset_top = 48.0
+offset_right = 247.0
+offset_bottom = 71.0
+text = "Z_rotation"
+
+[node name="Item_taken" type="Label" parent="." unique_id=1814911085]
+offset_left = 875.0
+offset_top = 3.0
+offset_right = 979.0
+offset_bottom = 26.0
+text = "Oggetti presi:"
