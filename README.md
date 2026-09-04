@@ -11,7 +11,7 @@ Si modelli, in Godot, un multirotore e si scelgano a piacere i dati di massa e d
 Usando la comunicazione via socket/DDS, si implementino in Python gli algoritmi di controllo del multirotore scegliendo a piacere i parametri di velocita, accelerazione e saturazione. In particolare si realizzino i controlli in velocita e posizione. Si tarino opportunamente i controllori e si producano i grafici per dimostrare la corretta taratura.  
  > 3 Path Planning:  
 
-Si generi, all’avvio, un grafo prefissato che include le 20 possibili posizioni, piu’ una posizione di partenzascelta a piacere. 
+Si generi, all’avvio, un grafo prefissato che include le 20 possibili posizioni, piu’ una posizione di partenza scelta a piacere. 
     Si faccia effettuare al multirotore questa sequenza di azioni:    
           &nbsp;&nbsp;&nbsp;1. Decollo e posizionamento ad una z specifica;  
           &nbsp;&nbsp;&nbsp;2. Raggiungimento della posizione i-esima dove e’ posizionato uno dei 5 oggetti usando la navigazione lungo in grafo e l’algoritmo di percorso minimo;  
